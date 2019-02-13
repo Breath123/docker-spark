@@ -70,7 +70,9 @@ RUN pip3.6 --no-cache-dir install \
 
 # Install TensorFlow GPU version and pyspark.
 # TODO: add requirements.txt
-RUN pip3.6 install tensorflow-gpu pyspark
+# fix issue of install pyspark together with tensorflow-gpu
+RUN pip3.6 --no-cache-dir install --trusted-host pypi.org --trusted-host files.pythonhosted.org pyspark
+RUN pip3.6 --no-cache-dir install --trusted-host pypi.org tensorflow-gpu
 # --- ~ DO NOT EDIT OR DELETE BETWEEN THE LINES --- #
 
 # RUN ln -s -f /usr/bin/python3 /usr/bin/python#
